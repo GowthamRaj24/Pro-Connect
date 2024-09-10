@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const url = "mongodb+srv://mgowthamraj9491:123000@cluster0.wjd7c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const connect = async () => {
