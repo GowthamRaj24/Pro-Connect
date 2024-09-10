@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { BiUpvote } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
 import { MdOutlineModeComment } from "react-icons/md";
 const AddReview = ({ searchReviews ,setAddReview}: any) => {
   const [reviewType, setReviewType] = useState("");
@@ -38,6 +39,14 @@ const AddReview = ({ searchReviews ,setAddReview}: any) => {
         boxShadow: "0px 0px 15px grey",
       }}
     >
+      <button
+        className="absolute right-2 top-2"
+        onClick={() => {
+          setAddReview(false);
+        }}
+      >
+        <IoClose size={20} />
+      </button>
       <div className="flex flex-row gap-3 items-center mb-4">
         <div className="w-1 h-10 bg-black rounded-lg"></div>
         <h1 className="text-xl">Add Review</h1>
