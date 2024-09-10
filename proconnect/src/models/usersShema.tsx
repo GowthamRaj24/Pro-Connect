@@ -44,6 +44,7 @@ export interface Referral {
     refereeId: string;
     date: Date;
     details: string;
+    status : 'pending' | 'accepted' | 'rejected';
 }
 
 export interface ResumeReview {
@@ -134,8 +135,6 @@ const userSchema: Schema = new Schema({
     availabilityForProjects: { type: Boolean, default: false },
     preferredContactMethod: { type: String, default: "email" },
     role: { type: String, required: true, enum: ['user', 'alumni'] },
-
-    // Alumni-specific fields
     company: { type: String },
     designation: { type: String },
     yearsOfExperience: { type: String },
@@ -150,24 +149,29 @@ const userSchema: Schema = new Schema({
     mentorshipPreferences: { type: [String], default: [] },
     eventsAttended: { type: [String], default: [] },
     portfolioLink: { type: String },
+
     mockInterviews: { type: [new Schema({
         interviewerId: { type: String, required: true },
         intervieweeId: { type: String, required: true },
         date: { type: Date, required: true },
         feedback: { type: String, required: true }
     }, { _id: false })]},
+
     resumeReviews: { type: [new Schema({
         reviewerId: { type: String, required: true },
         revieweeId: { type: String, required: true },
         date: { type: Date, required: true },
         feedback: { type: String, required: true }
     }, { _id: false })]},
+
     referrals: { type: [new Schema({
         referrerId: { type: String, required: true },
         refereeId: { type: String, required: true },
         date: { type: Date, required: true },
-        details: { type: String, required: true }
+        details: { type: String, required: true },
+        status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' }
     }, { _id: false })]},
+
     oneToOneMentorships: { type: [new Schema({
         mentorId: { type: String, required: true },
         menteeId: { type: String, required: true },
@@ -175,5 +179,6 @@ const userSchema: Schema = new Schema({
         topicsDiscussed: { type: [String], required: true },
         feedback: { type: String, required: true }
     }, { _id: false })]}
+
 });
 export default mongoose.models.User || mongoose.model<UserDocument>('User', userSchema);
