@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, model, Document } from "mongoose";
 
 export interface IReview extends Document {
     reviewer: Schema.Types.ObjectId;
@@ -41,4 +41,4 @@ const reviewSchema = new Schema<IReview>({
     }, { _id: false })]} 
 });
 
-export default model<IReview>('Reviews', reviewSchema);
+export default mongoose.models.Reviews || mongoose.model<IReview>('Reviews', reviewSchema);

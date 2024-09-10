@@ -5,7 +5,7 @@ import { RiFunctionLine } from "react-icons/ri";
 import { GiSkills } from "react-icons/gi";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-const LeaderboardComp = () => {
+const LeaderboardComp = ({index}:any) => {
   return (
     <div
       className="flex flex-row gap-3 p-2 w-72 rounded-md"
@@ -13,6 +13,11 @@ const LeaderboardComp = () => {
         border: "1px solid lightgrey",
       }}
     >
+      {index===0 && <div className=""><p>1st</p></div>}
+      {index===1 && <div className=""><p>2nd</p></div>}
+      {index===2 && <div className=""><p>3rd</p></div>}
+      {index>2 && <div className=""><p>{index+1}th</p></div>}
+
       <Image
         src={
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK2CNpBwzHxcljl-ZBhjhsJzVJDoxF7BqaZQ&s"
@@ -60,8 +65,9 @@ const ThankForDonation = ({ setThanks }: any) => {
           alt="Donate for Good"
         />
       </div>
-      <div className="p-3">
-        <p>Thanks for your donation</p>
+      <div className="p-3 items-center">
+        <p className="text-center text-lg">Thank You!</p>
+        <p className="text-center text-base">For your donation</p>
       </div>
     </div>
   );
@@ -226,7 +232,7 @@ const DonateForGood = () => {
             <h1 className="text-lg font-sans">Donation for ?</h1>
           </div>
           <div className="grid grid-cols-2 h-40 gap-2">
-            <div className="flex flex-row items-center gap-3 bg-gray-200 h-16 p-3 rounded-md">
+            <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
               <MdLibraryBooks size={30} />
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
@@ -235,7 +241,7 @@ const DonateForGood = () => {
                 </h1>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3 bg-gray-200 h-16 p-3 rounded-md">
+            <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
               <MdOutlineBloodtype size={30} />
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
@@ -244,7 +250,7 @@ const DonateForGood = () => {
                 </h1>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3 bg-gray-200 h-16 p-3 rounded-md">
+            <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
               <RiFunctionLine size={30} />
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
@@ -253,7 +259,7 @@ const DonateForGood = () => {
                 </h1>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-3 bg-gray-200 h-16 p-3 rounded-md">
+            <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
               <GiSkills size={30} />
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
@@ -294,8 +300,8 @@ const DonateForGood = () => {
         <div>
           <p className="text-lg font-sans font-semibold my-2">Leaderboard</p>
           <div className="h-72 overflow-y-scroll no-scrollbar gap-y-2 flex flex-col">
-            {[0, 1, 2, 3, 4].map((item, key) => {
-              return <LeaderboardComp />;
+            {[0, 1, 2, 3, 4].map((item, index) => {
+              return <LeaderboardComp index={index} />;
             })}
           </div>
           <button
