@@ -7,12 +7,13 @@ export default async (req:NextApiRequest , res : NextApiResponse) => {
     const {method} = req;
     switch(method){
         case "POST":
-            const API_KEY = "YOUR_API_KEY";
+            const API_KEY = "AIzaSyB4hZ47Jn4tV3pnkY_e7wXXE4MAH8TCXdw"; // Replace with your actual API key
             const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            const prompt = req.body.prompt;
+            const message = req.body.message;
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro"  });
             try{
-                const prompt = req.body.prompt; // Add your prompt here
-                const result = await model.generateContent(req.body.message,  prompt );
+                const result = await model.generateContent(prompt + " " + message); // Add the prompt to the message
                 const text = result.response.text();
                 return res.status(200).json({result:text});
             }

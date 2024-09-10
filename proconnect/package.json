@@ -12,22 +12,14 @@
     "@google/generative-ai": "^0.17.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
-<<<<<<< HEAD
     "fs": "^0.0.1-security",
     "google": "^2.1.0",
-=======
     "formidable": "^3.5.1",
->>>>>>> 2e196a5bdf8a09a1e40013353931352fc073098f
     "mongoose": "^8.6.1",
     "next": "14.2.9",
     "next-auth": "^4.24.7",
     "next-seo": "^6.6.0",
-<<<<<<< HEAD
-    "node-fetch": "^3.3.2",
-    "pdf-lib": "^1.17.1",
-=======
     "pdf-parse": "^1.1.1",
->>>>>>> 2e196a5bdf8a09a1e40013353931352fc073098f
     "pdf-to-text": "^0.0.7",
     "pdf2json": "^3.1.4",
     "razorpay": "^2.9.4",
