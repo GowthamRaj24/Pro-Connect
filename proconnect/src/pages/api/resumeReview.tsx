@@ -11,10 +11,10 @@ export default async (req:NextApiRequest,res:NextApiResponse)=>{
                 const ResumeReview = {
                     reviewerId: req.body.reviewerId,
                     revieweeId: req.body.revieweeId,
-                    date: Date,
+                    date: Date.now(),
                     feedback: req.body.feedback
                 }
-                
+
                 const updatedUser = await usersShema.findOneAndUpdate(
                     { _id: req.body.revieweeId },
                     { $push: { resumeReviews: ResumeReview } },
@@ -30,6 +30,7 @@ export default async (req:NextApiRequest,res:NextApiResponse)=>{
                 return res.status(200).json({"user" :updatedUser , "alumin":updatedAlumin});
             }
             catch(err){
+                console.log(err);
                 return res.status(400).json("Error Adding in ResumeReview\n" + err);
             }
     }

@@ -21,6 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 return res.status(200).json({"review" :newReview});
             }
             catch(err){
+                console.log(err);
                 return res.status(400).json("Error Adding in Review\n" + err);
             }
     }
