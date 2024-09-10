@@ -8,17 +8,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     case "GET":
       try {
         const filter = req.query.filter;
-        const reviews = await reviewsSchema.find(
-{
-  $or: [
-    { title: { $regex: filter, $options: "i" } },
-    { content: { $regex: filter, $options: "i" } },
-    { tags: { $regex: filter, $options: "i" } },
-    { "comments.title": { $regex: filter, $options: "i" } },
-    { "comments.content": { $regex: filter, $options: "i" } },
-    { "comments.tags": { $regex: filter, $options: "i" } },
-  ],
-}
+        const reviews = await reviewsSchema.find({
+          $or: [
+            { title: { $regex: filter, $options: "i" } },
+            { content: { $regex: filter, $options: "i" } },
+            { tags: { $regex: filter, $options: "i" } },
+            { "comments.title": { $regex: filter, $options: "i" } },
+            { "comments.content": { $regex: filter, $options: "i" } },
+            { "comments.tags": { $regex: filter, $options: "i" } },
+          ],
+        }).sort(
+          {reviewDate:-1}
         );
         return res.status(200).json(reviews);
       } catch (err) {
@@ -31,5 +31,3 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).json({ message: "Method Not Allowed" });
   }
 };
-
-

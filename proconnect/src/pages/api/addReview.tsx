@@ -13,7 +13,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     type : req.body.type,
                     title : req.body.title,
                     content : req.body.content,
-                    tags : req.body.tags
                 }
                 const newReview = await reviewsSchema.create(review);
                 await newReview.save();
