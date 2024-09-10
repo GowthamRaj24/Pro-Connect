@@ -1,16 +1,12 @@
 import Link from "next/link";
 import axios from "axios";
-import styles from "@/styles/signup.module.css";
 import Image from "next/image";
 import React from "react";
-import successlogo from "@/resources/successicon.png";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 const Signup = () => {
-  const { data: session, status } = useSession();
   const [changeLoad, setChangeLoad] = useState(false);
   const router = useRouter();
   const [showpass, setShowpass] = useState("password");
@@ -24,12 +20,13 @@ const Signup = () => {
     lastname: "",
     email: "",
     password: "",
+    role: "student",
   });
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (status === "authenticated") {
+  //     router.push("/");
+  //   }
+  // }, [status]);
   const handlechange = (e: any) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -57,9 +54,9 @@ const Signup = () => {
       .then((res) => {
         console.log(res.data.token);
         setRedirection_login(
-          <div className={styles.loginalert}>
-            <div className={styles.login_redirection}>
-              <Image src={successlogo} alt="" />
+          <div >
+            <div >
+
               <p>Your account has been created successfully!</p>
               <button onClick={redirect_now}>Next →</button>
             </div>
@@ -88,17 +85,6 @@ const Signup = () => {
           });
         }
       })
-      .finally(async() => {
-      await axios
-      .post("../api/notifyemails", { email: user.email })
-      .then((res) => {
-        console.log("Successfully registered!");
-      })
-      .catch((err) => {
-        console.log("Already registered!");
-      })
-        setChangeLoad(false);
-      });
   };
   return (
     <>
@@ -107,7 +93,7 @@ const Signup = () => {
       nofollow={true}
       noindex={true}
     />
-      <form className={styles.signupform} onSubmit={userSubmit}>
+      <form  onSubmit={userSubmit}>
         <h3>CREATE ACCOUNT</h3>
         <p>First Name</p>
         <input
@@ -147,7 +133,7 @@ const Signup = () => {
           required
         />
         <p className="responseerr">{responseerr.passerr}</p>
-        <div className={styles.show_pass_signup}>
+        <div >
           <input
             type="checkbox"
             onChange={() => {
@@ -167,7 +153,7 @@ const Signup = () => {
             <>Submit</>
           )}
         </button>
-        <p className={styles.loginredirection}>
+        <p >
           Already have an account ? <Link href="/login">Log in</Link>
         </p>
       </form>
