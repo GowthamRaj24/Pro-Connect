@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState , useEffect} from "react";
+import { IReview } from "@/models/reviewsSchema";
 
 const Reviews = () => {
     const [filter , setFilter] = useState("");
