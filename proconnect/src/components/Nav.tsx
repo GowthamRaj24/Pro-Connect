@@ -30,8 +30,14 @@ const Nav=()=>{
                     <button className="w-full p-2 my-2">Projects</button>
                     <button className="w-full p-2 my-2">Initiatives</button>
                     <button className="w-full p-2 my-2">Donations</button>
-                    <button className="w-full p-2 my-2">ATS Score</button>
-                    <button className="w-full p-2 my-2">Cover letter</button>
+                    <button className="w-full p-2 my-2"
+                        onClick={()=>{
+                            router.push('/atsScore')
+                        }}
+                    >ATS Score</button>
+                    <button className="w-full p-2 my-2"  onClick={()=>{
+                            router.push('/coverletter')
+                        }}>Cover letter</button>
                     <button className="w-full p-2 my-2"
                         onClick={()=>{
                             signOut();
