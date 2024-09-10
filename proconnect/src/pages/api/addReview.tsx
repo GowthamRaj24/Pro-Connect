@@ -1,6 +1,6 @@
 import connect from "../../../db";
 import reviewsSchema from "@/models/reviewsSchema";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest , NextApiResponse } from "next";
 connect();
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -14,6 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     title : req.body.title,
                     content : req.body.content,
                 }
+
                 const newReview = await reviewsSchema.create(review);
                 await newReview.save();
 

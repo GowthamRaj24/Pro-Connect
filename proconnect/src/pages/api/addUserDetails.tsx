@@ -20,7 +20,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 };
 
                 Object.assign(user, userData);
-
                 await user.save();
                 res.status(200).json({ message: "User details updated successfully" });
             } catch (err) {

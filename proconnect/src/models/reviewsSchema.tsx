@@ -14,6 +14,7 @@ export interface IReview extends Document {
 
 export interface Icomment extends Document {
     reviewer: Schema.Types.ObjectId;
+    commentId : Schema.Types.ObjectId;
     title: string;
     rating: number;
     content: string;
@@ -33,6 +34,7 @@ const reviewSchema = new Schema<IReview>({
     upvotes: { type: Number, default: 0 },
     comments:{ type: [new Schema<Icomment>({
         reviewer: { type: String},
+        commentId : {type : String},
         title: { type: String},
         rating: { type: Number},
         content: { type: String},
