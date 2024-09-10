@@ -1,40 +1,21 @@
-import Link from "next/link";
-import React from "react";
-import axios, { AxiosError } from "axios";
-import styles from "@/styles/signup.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { loginUser } from "../../../helpers";
-import { useRouter } from "next/router"
-import { NextSeo } from "next-seo";
-import { useSession } from "next-auth/react";
+import { AxiosError } from "axios";
+import { signIn, useSession } from "next-auth/react";
+
 const Login = () => {
-  const router = useRouter();
+  const session=useSession();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [changeLoad, setChangeLoad] = useState(false);
-  const { data: session, status } = useSession();
-  const [showpass, setShowpass] = useState("password");
-  const [user, setUser]: any = useState({
-    email: "",
-    password: "",
+  const [errmsg, setErrmsg] = useState({
+    usernameerr: "",
+    username_and_password_error: null,
   });
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status]);
-  const [errmsg, setErrmsg]: any = useState({
-    email_error: "",
-    username_and_password_error: "",
-  });
-  const handlechange = (e: any) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      setChangeLoad(true);
-      const email = user.email;
-      const password = user.password;
-      const loginRes = await loginUser({ email, password });
+      const loginRes = await signIn("credentials",{ email, password });
       if (loginRes && !loginRes.ok) {
         setChangeLoad(false);
         setErrmsg({
@@ -47,7 +28,7 @@ const Login = () => {
           ),
         });
       } else {
-        router.push("/");
+        // router.push("/");
       }
     } catch (err) {
       if (err instanceof AxiosError) {
@@ -65,61 +46,31 @@ const Login = () => {
       }
     }
   };
+  if(session.data){
+    console.log(session.data)
+    return <div>
+      <h1>You are already logged in</h1>
+    </div>
+  }
   return (
-    <>
-     <NextSeo
-      title="Login"
-    />
-      <form className={styles.signupform} onSubmit={handleSubmit}>
-        <h3>LOG IN</h3>
-        <p>Email</p>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
-          name="email"
-          placeholder="eg. Ravikumar@gmail.com"
-          value={user.email}
-          onChange={handlechange}
-          required
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <p>{errmsg.email_error}</p>
-        <p>Password</p>
         <input
-          type={`${showpass}`}
-          name="password"
-          placeholder="eg. Ravi@1456"
-          value={user.password}
-          onChange={handlechange}
-          required
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <p>{errmsg.username_and_password_error}</p>
-        <div className={styles.show_pass_signup}>
-          <input
-            type="checkbox"
-            onChange={() => {
-              if (showpass === "password") {
-                setShowpass("text");
-              } else {
-                setShowpass("password");
-              }
-            }}
-          />
-          <p>Show password</p>
-        </div>
-        <button type="submit">
-          {changeLoad ? (
-            <></>
-          ) : (
-            <>Submit</>
-          )}
-        </button>
-        <p>
-          <Link href="/forgotpassword">forgot password?</Link>
-        </p>
-        <p className={styles.loginredirection}>
-          Don't have an account? <Link href="/signup">Sign Up</Link>
-        </p>
+        <button type="submit">Login</button>
       </form>
-    </>
+    </div>
   );
 };
 export default Login;

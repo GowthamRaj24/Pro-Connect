@@ -9,14 +9,15 @@ const options:NextAuthOptions={
             id:"credentials",
             name:"Credentials",
             credentials:{
-                email:{label:"Email",type:"text"},
-                password:{label:"Password",type:"password"}
+                email:{label:"email",type:"email"},
+                password:{label:"password",type:"password"}
             },
             async authorize(credentials) {
                 await connect().catch(err=>{throw new Error(err)})
                 const user=await usersShema.findOne({
                     email:credentials?.email
                 }).select("+password")
+                console.log(user)
                 if(!user){
                     throw new Error("Invalid credentials")
                 }

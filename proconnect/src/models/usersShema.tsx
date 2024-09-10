@@ -1,114 +1,9 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface BaseUser extends Document {
-    firstName: string;
-    lastName: string;
-    username: string;
-    password: string;
-    transactions: any[];
-    contacts: any[];
-    registrationNumber?: string;
-    department?: string;
-    year?: string;
-    interestDomain: Array<string>;
-    skills: Array<string>;
-    bio: string;
-    profilePic: string;
-    email?: string;
-    phoneNumber?: string;
-    enrollmentDate?: Date;
-    courses?: Array<string>;
-    grades?: Array<{ course: string, grade: string }>;
-    activities?: Array<string>;
-    projects?: Array<string>;
-    internships?: Array<string>;
-    achievements?: Array<string>;
-    certifications?: Array<string>;
-    goals?: Array<string>;
-    mentors?: Array<string>;
-    mentorRequests?: Array<string>;
-    availabilityForProjects?: boolean;
-    preferredContactMethod?: string;
-    role: 'user' | 'alumni';
-}
-
-export interface MockInterview {
-    interviewerId: string;
-    intervieweeId: string;
-    date: Date;
-    feedback: string;
-}
-
-export interface Referral {
-    referrerId: string;
-    refereeId: string;
-    date: Date;
-    details: string;
-    status : 'pending' | 'accepted' | 'rejected';
-}
-
-export interface ResumeReview {
-    reviewerId: string;
-    revieweeId: string;
-    date: Date;
-    feedback: string;
-}
-
-export interface OneToOneMentorship {
-    mentorId: string;
-    menteeId: string;
-    date: Date;
-    topicsDiscussed: string[];
-    feedback: string;
-}
-
-export interface AlumniSpecific {
-    company?: string;
-    designation?: string;
-    yearsOfExperience?: string;
-    linkedin?: string;
-    twitter?: string;
-    github?: string;
-    location?: string;
-    degree?: string;
-    institution?: string;
-    certifications?: Array<string>;
-    awards?: Array<string>;
-    availableForMentorship?: boolean;
-    mentorshipPreferences?: Array<string>;
-    eventsAttended?: Array<string>;
-    achievements?: Array<string>;
-    mockInterviews?: MockInterview[];
-    resumeReviews?: ResumeReview[];
-    referrals?: Referral[];
-    oneToOneMentorships?: OneToOneMentorship[];
-    portfolioLink?: string;
-}
-
-export interface UserSpecific {
-    registrationNumber: string;
-    department: string;
-    year: string;
-    courses?: Array<string>;
-    grades?: Array<{ course: string, grade: string }>;
-    activities?: Array<string>;
-    projects?: Array<string>;
-    internships?: Array<string>;
-    achievements?: Array<string>;
-    certifications?: Array<string>;
-    goals?: Array<string>;
-    mentors?: Array<string>;
-    mentorRequests?: Array<string>;
-    availabilityForProjects?: boolean;
-    preferredContactMethod?: string;
-}
-
-export type UserDocument = BaseUser & (UserSpecific | AlumniSpecific);
-
-const userSchema: Schema = new Schema({
+const usersSchema: Schema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    username: { type: String, required: true },
+    email: { type: String, required: true },
     password: { type: String, required: true },
     transactions: { type: [Schema.Types.Mixed], default: [] },
     contacts: { type: [Schema.Types.Mixed], default: [] },
@@ -119,7 +14,6 @@ const userSchema: Schema = new Schema({
     skills: { type: [String], default: [] },
     bio: { type: String, default: "" },
     profilePic: { type: String, default: "" },
-    email: { type: String },
     phoneNumber: { type: String },
     enrollmentDate: { type: Date, default: Date.now },
     courses: { type: [String], default: [] },
@@ -161,6 +55,7 @@ const userSchema: Schema = new Schema({
         reviewerId: { type: String, required: true },
         revieweeId: { type: String, required: true },
         date: { type: Date, required: true },
+        resumeFileUrl: { type: String, required: true },
         feedback: { type: String, required: true }
     }, { _id: false })]},
 
@@ -181,4 +76,5 @@ const userSchema: Schema = new Schema({
     }, { _id: false })]}
 
 });
-export default mongoose.models.User || mongoose.model<UserDocument>('User', userSchema);
+
+export default mongoose.models.UserSchema1 || mongoose.model('UserSchema1', usersSchema);
