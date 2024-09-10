@@ -177,9 +177,11 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-3 gap-3 my-2 mt-6">
-        <div className="bg-gray-800 text-white items-center justify-center flex flex-row h-32 rounded-md">
+        <button className="bg-gray-800 text-white items-center justify-center flex flex-row h-32 rounded-md" onClick={()=>{
+          router.push('/reviews')
+        }}>
           <p className="text-xl font-sans">Discuss</p>
-        </div>
+        </button>
         <div className="bg-teal-800 text-white items-center justify-center flex flex-row h-32 rounded-md">
           <p className="text-xl font-sans">Communities</p>
         </div>

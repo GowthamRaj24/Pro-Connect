@@ -1,10 +1,16 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 const Nav=()=>{
+    const router=useRouter();
     const [showMenu,setShowMenu]=useState(false);
     return(
         <div className="flex flex-row w-256 mx-auto justify-between p-3 z-40 sticky">
+            <button onClick={()=>{
+                router.push('/dashboard')
+            }}>
             <h1 className="text-2xl font-bold">PROCONNECT</h1>
+            </button>
             <button onClick={()=>{
                 setShowMenu(!showMenu);
             }}>

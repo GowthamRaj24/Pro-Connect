@@ -10,13 +10,10 @@ export default async (req: NextApiRequest , res : NextApiResponse) => {
             try{
                 const comment = {
                     reviewer : req.body.userId,
-                    title : req.body.title,
-                    rating : req.body.rating,
-                    content : req.body.content,
+                    content : req.body.comment,
                     reviewDate : Date.now(),
-                    type: req.body.type,
                 }
-                await reviewsSchema.findOneAndUpdate({_id : req.body.userId} , 
+                await reviewsSchema.findOneAndUpdate({_id : req.body.reviewId} , 
                     {$push : {comments : comment}} , {new : true} 
                 )
                 return res.status(200).json({"comment" : comment});
