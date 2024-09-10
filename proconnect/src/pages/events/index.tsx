@@ -5,6 +5,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { MdOutlineDateRange } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci"
 import { IoMdTime } from "react-icons/io";
+import Nav from "@/components/Nav";
 const data = [
       {
           title: "Lorem ipsum dolor sit amet,",
@@ -33,6 +34,8 @@ const data = [
 const EventsPage: React.FC = () => {
   const [currentEvent, setCurrentEvent] = useState("description");
   return (
+   <>
+   <Nav/>
     <div>
       <div
         className="w-256 mx-auto h-80 rounded-md  my-5 relative"
@@ -328,7 +331,7 @@ const EventsPage: React.FC = () => {
           comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
         </p>
       </div>
-    </div>
+    </div></>
   );
 };
 export default EventsPage;

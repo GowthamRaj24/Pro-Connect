@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -31,7 +32,11 @@ const Nav=()=>{
                     <button className="w-full p-2 my-2">Donations</button>
                     <button className="w-full p-2 my-2">ATS Score</button>
                     <button className="w-full p-2 my-2">Cover letter</button>
-                    <button className="w-full p-2 my-2">Logout</button>
+                    <button className="w-full p-2 my-2"
+                        onClick={()=>{
+                            signOut();
+                        }}
+                    >Logout</button>
                 </div>
             )}
         </div>

@@ -165,6 +165,18 @@ const ProjectContribute = () => {
     </div>
   );
 };
+const UpdateAlumniProfile = () =>{
+  return (
+    <div className="w-160 h-96 rounded-md bg-white fixed" style={{
+      top:"50%",
+      left:"50%",
+      transform:"translate(-50%,-50%)",
+      boxShadow:"0 0 10px rgba(0,0,0,0.2)"
+    }}> 
+  
+    </div>
+  );
+};
 const Dashboard = () => {
   const router = useRouter();
   return (
@@ -299,7 +311,9 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-    </div></>
+    </div>
+    <UpdateAlumniProfile/>
+    </>
   );
 };
 export default Dashboard;
