@@ -186,7 +186,9 @@ const Dashboard = () => {
           <p className="text-xl font-sans">Communities</p>
         </div>
         <div className="bg-cyan-800 text-white items-center justify-center flex flex-row h-32 rounded-md">
-          <p className="text-xl font-sans">Mentorship</p>
+          <button onClick={()=>{
+          router.push('/mentorship')
+        }}><p className="text-xl font-sans">Mentorship</p></button>
         </div>
       </div>
 

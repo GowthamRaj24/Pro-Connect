@@ -1,11 +1,77 @@
 import Nav from "@/components/Nav";
 import axios from "axios";
+import { set } from "mongoose";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { BiUpvote } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineModeComment } from "react-icons/md";
-const AddReview = ({ searchReviews ,setAddReview}: any) => {
+const ShowSummarize = ({ text, setShowSummarize }) => {
+  const [summarizedText, setSummarizedText]:any = useState(null);
+  const [promt, setPromt] = useState("Summarize the following text");
+  const formatText = (text) => {
+    text = text.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+    text = text.replace(/_(.*?)_/g, "<em>$1</em>");
+    text = text.replace(/\n/g, "<br>");
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+  };
+  return (
+    <div
+      className="w-140 rounded-md bg-white fixed p-3 h-140 overflow-y-scroll no-scrollbar"
+      style={{
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        boxShadow: "0px 0px 15px grey",
+      }}
+    >
+      <button
+        className="absolute right-2 top-2"
+        onClick={() => {
+          setShowSummarize(false);
+        }}
+      >
+        <IoClose size={20} />
+      </button>
+      <div className="flex flex-row gap-3 items-center mb-4">
+        <div className="w-1 h-10 bg-black rounded-lg"></div>
+        <h1 className="text-xl">Summarized text</h1>
+      </div>
+      <div>
+        <input
+          type="text"
+          value={promt}
+          onChange={(e) => setPromt(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded-md"
+          placeholder="Enter your prompt"
+        />
+        <button
+          className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 my-3"
+          onClick={() => {
+            const fetchSummarizedText = async () => {
+              await axios
+                .post("../api/aichatbot", {
+                  prompt: promt,
+                  message: JSON.stringify(text),
+                })
+                .then((res) => {
+                  setSummarizedText(formatText(res?.data?.result || ""));
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            };
+            fetchSummarizedText();
+          }}
+        >
+          Submit
+        </button>
+      </div>
+      <p>{summarizedText}</p>
+    </div>
+  );
+};
+const AddReview = ({ searchReviews, setAddReview }: any) => {
   const [reviewType, setReviewType] = useState("");
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
@@ -223,7 +289,9 @@ const ReviewItem = ({ review, searchReviews }) => {
 const Reviews = () => {
   const [filter, setFilter] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [addReview,setAddReview]=useState(false);
+  const [addReview, setAddReview] = useState(false);
+  const [showSummarize, setShowSummarize] = useState(false);
+  const [summarizedText, setSummarizedText] = useState("");
   const searchReviews = async () => {
     await axios
       .get(`../api/searchReviews?filter=${filter}`)
@@ -267,21 +335,39 @@ const Reviews = () => {
             <ReviewItem review={review} searchReviews={searchReviews} />
           ))}
         </div>
-        <div
-          className="col-start-10 col-end-13 rounded-md h-44 p-3"
-          style={{
-            boxShadow: "0px 0px 15px lightgrey",
-          }}
-        >
-          <p>Want to share you're thoughts?</p>
-          <button className="p-2 bg-black w-full text-center rounded-md text-white my-4" onClick={()=>{
-            setAddReview(true);
-          }}>
-            + Create post
+        <div className="col-start-10 col-end-13 rounded-md h-44">
+          <div
+            className=" p-3"
+            style={{
+              boxShadow: "0px 0px 15px lightgrey",
+            }}
+          >
+            <p>Want to share you're thoughts?</p>
+            <button
+              className="p-2 bg-black w-full text-center rounded-md text-white my-4"
+              onClick={() => {
+                setAddReview(true);
+              }}
+            >
+              + Create post
+            </button>
+          </div>
+          <button
+            className="p-2 bg-black w-full text-center rounded-md text-white my-4"
+            onClick={() => {
+              setShowSummarize(true);
+            }}
+          >
+            Summarize
           </button>
         </div>
       </div>
-      {addReview && <AddReview searchReviews={searchReviews} setAddReview={setAddReview} />}
+      {addReview && (
+        <AddReview searchReviews={searchReviews} setAddReview={setAddReview} />
+      )}
+      {showSummarize && (
+        <ShowSummarize text={reviews} setShowSummarize={setShowSummarize} />
+      )}
     </>
   );
 };

@@ -18,6 +18,9 @@ const config: Config = {
         "140": "35rem",
         "100": "25rem",
         "120": "30rem",
+      },
+      height:{
+        "140": "35rem",
       }
     },
   },
