@@ -12,6 +12,13 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      width: {
+        "256": "65rem",
+        "250": "63.5rem",
+        "140": "35rem",
+        "100": "25rem",
+        "120": "30rem",
+      }
     },
   },
   plugins: [],
