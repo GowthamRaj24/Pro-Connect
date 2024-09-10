@@ -29,7 +29,7 @@ export interface BaseUser extends Document {
     mentorRequests?: Array<string>;
     availabilityForProjects?: boolean;
     preferredContactMethod?: string;
-    role: 'user' | 'alumni';
+    role?:string;
 }
 
 export interface MockInterview {
@@ -106,10 +106,10 @@ export interface UserSpecific {
 export type UserDocument = BaseUser & (UserSpecific | AlumniSpecific);
 
 const userSchema: Schema = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    username: { type: String, required: true },
-    password: { type: String, required: true },
+    firstName: { type: String },
+    lastName: { type: String },
+    username: { type: String },
+    password: { type: String },
     transactions: { type: [Schema.Types.Mixed], default: [] },
     contacts: { type: [Schema.Types.Mixed], default: [] },
     registrationNumber: { type: String },
@@ -134,9 +134,8 @@ const userSchema: Schema = new Schema({
     mentorRequests: { type: [String], default: [] },
     availabilityForProjects: { type: Boolean, default: false },
     preferredContactMethod: { type: String, default: "email" },
-    role: { type: String, required: true, enum: ['user', 'alumni'] },
+    role : {type: String},
 
-    // Alumni-specific fields
     company: { type: String },
     designation: { type: String },
     yearsOfExperience: { type: String },
@@ -147,34 +146,44 @@ const userSchema: Schema = new Schema({
     degree: { type: String },
     institution: { type: String },
     awards: { type: [String], default: [] },
-    availableForMentorship: { type: Boolean, default: false },
+    availableForMentorship: { type: Boolean, default: false},
     mentorshipPreferences: { type: [String], default: [] },
     eventsAttended: { type: [String], default: [] },
     portfolioLink: { type: String },
+    
     mockInterviews: { type: [new Schema({
-        interviewerId: { type: String, required: true },
-        intervieweeId: { type: String, required: true },
-        date: { type: Date, required: true },
-        feedback: { type: String, required: true }
+        interviewerId: { type: String },
+        intervieweeId: { type: String },
+        date: { type: Date },
+        feedback: { type: String }
     }, { _id: false })]},
+
     resumeReviews: { type: [new Schema({
-        reviewerId: { type: String, required: true },
-        revieweeId: { type: String, required: true },
-        date: { type: Date, required: true },
-        feedback: { type: String, required: true }
+        reviewerId: { type: String },
+        revieweeId: { type: String },
+        date: { type: Date },
+        feedback: { type: String },
+        status : { type: String },
+        sheduledTime : {type : Date}
     }, { _id: false })]},
+
     referrals: { type: [new Schema({
-        referrerId: { type: String, required: true },
-        refereeId: { type: String, required: true },
-        date: { type: Date, required: true },
-        details: { type: String, required: true }
+        referrerId: { type: String },
+        refereeId: { type: String },
+        date: { type: Date },
+        details: { type: String },
+        status : { type: String },
+        sheduledTime : {type : Date}
     }, { _id: false })]},
+
     oneToOneMentorships: { type: [new Schema({
-        mentorId: { type: String, required: true },
-        menteeId: { type: String, required: true },
-        date: { type: Date, required: true },
-        topicsDiscussed: { type: [String], required: true },
-        feedback: { type: String, required: true }
+        mentorId: { type: String },
+        menteeId: { type: String },
+        date: { type: Date },
+        topicsDiscussed: { type: [String] },
+        status : { type: String },
+        sheduledTime : {type : Date},
+        feedback: { type: String }
     }, { _id: false })]}
 });
 

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+
 const Signup = () => {
   const [changeLoad, setChangeLoad] = useState(false);
   const router = useRouter();
@@ -19,14 +20,9 @@ const Signup = () => {
     firstname: "",
     lastname: "",
     email: "",
-    password: "",
-    role: "student",
+    password: ""
   });
-  // useEffect(() => {
-  //   if (status === "authenticated") {
-  //     router.push("/");
-  //   }
-  // }, [status]);
+
   const handlechange = (e: any) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };

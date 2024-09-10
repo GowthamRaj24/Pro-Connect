@@ -24,7 +24,7 @@ export interface Icomment extends Document {
 
 const reviewSchema = new Schema<IReview>({
     reviewer: { type: Schema.Types.ObjectId, ref: 'User',},
-    type: { type: String, enum: ["question", "companyreview", "discussion", "suggestion"],},
+    type: { type: String, enum: ["question", "companyreview", "discussion", "suggestion"]},
     title: { type: String},
     content: { type: String},
     reviewDate: { type: Date, default: Date.now },

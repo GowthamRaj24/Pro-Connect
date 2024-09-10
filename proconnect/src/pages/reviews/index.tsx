@@ -18,7 +18,7 @@ const Reviews = () => {
             setReviews(data);
         };
         searchReviews();
-    })
+    }, [filter]);
 
     return(<>
         <h1>Reviews</h1>
@@ -27,10 +27,11 @@ const Reviews = () => {
             {
                 reviews.map((review: IReview) => (
                     <div key={String(review._id)}>
-                        <h2>{String(review.reviewer)}</h2>
+                        <h2>{String(review.type)}</h2>
                         <p>{review.title}</p>
                         <p>{review.content}</p>
-                        <p>{review.tags}</p>
+                        <p>{String(review.reviewDate)}</p>
+                        <p>{review.upvotes}</p>
                         {review.comments.map((comment) => (
                             <div key={String(comment._id)}>
                                 <h3>{comment.title}</h3>

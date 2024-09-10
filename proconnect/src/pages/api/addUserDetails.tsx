@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         case "POST":
             try {
                 const user = await usersShema.findById(req.body.userId);
-                    
+
                 if (!user) {
                     res.status(400).json({ message: "User not found" });
                     return;
