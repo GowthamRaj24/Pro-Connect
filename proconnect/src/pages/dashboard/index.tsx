@@ -4,9 +4,8 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { MdOutlineDateRange } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import { IoMdTime } from "react-icons/io";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { useRouter } from "next/router";
+import Nav from "@/components/Nav";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -28,6 +27,7 @@ const responsive = {
 };
 const EventContribute = () => {
   return (
+ <>
     <div
       className="overflow-x-hidden p-3 rounded-md flex flex-row gap-3 items-center"
       style={{
@@ -71,7 +71,7 @@ const EventContribute = () => {
           </button>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 const EventSnapShotComp = () => {
@@ -168,6 +168,8 @@ const ProjectContribute = () => {
 const Dashboard = () => {
   const router = useRouter();
   return (
+   <>
+   <Nav/>
     <div className="w-256 mx-auto rounded-md my-5 relative p-3 py-5">
       <div className="flex flex-row gap-3 items-center">
         <div className="w-1 h-10 bg-black rounded-lg"></div>
@@ -293,7 +295,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 export default Dashboard;

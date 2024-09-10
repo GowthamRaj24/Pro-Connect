@@ -1,25 +1,25 @@
-import { IReview } from "@/models/reviewsSchema";
+import axios from "axios";
 import { useState , useEffect} from "react";
 
 const Reviews = () => {
     const [filter , setFilter] = useState("");
-    const [reviews, setReviews] = useState<IReview[]>([]);
-
+    const [reviews, setReviews] = useState([]);
+    const searchReviews = async () => {
+        await axios.get(`../api/searchReviews?filter=${filter}`)
+        .then((res)=>{
+            console.log(res?.data);
+            setReviews(res?.data);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    };
     useEffect(()=>{
-        const searchReviews = async () => {
-            const res = await fetch("http://localhost:3000/api/searchReviews", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ filter }),
-            });
-            const data = await res.json();
-            setReviews(data);
-        };
         searchReviews();
-    }, [filter]);
-
+    }, []);
+    useEffect(()=>{
+        searchReviews();
+    },[filter])
     return(<>
         <h1>Reviews</h1>
         <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />

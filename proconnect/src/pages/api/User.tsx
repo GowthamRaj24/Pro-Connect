@@ -1,8 +1,8 @@
 import connect from '../../../db';
 import usersShema from '@/models/usersShema';
 import { NextApiRequest, NextApiResponse } from 'next';
-import bcrypt from 'bcrypt';
 connect();
+const bcrypt=require("bcrypt");
 
 export default async (req:NextApiRequest,res:NextApiResponse)=>{
     const {method}=req;
