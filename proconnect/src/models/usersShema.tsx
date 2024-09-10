@@ -60,7 +60,7 @@ const usersSchema: Schema = new Schema({
     achievements: { type: Array, default: [] },
     certifications: { type: Array, default: [] },
     goals: { type: Array, default: [] },
-    mentors: { type: Array, default: [] }, // List of mentor IDs
+    mentors: { type: Array, default: [] }, 
     mentorRequests: { type: Array, default: [] }, // List of mentorship requests
     availabilityForProjects: { type: Boolean, default: false },
     preferredContactMethod: { type: String, default: "email" },
