@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.17.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
+    "fs": "^0.0.1-security",
+    "google": "^2.1.0",
     "mongoose": "^8.6.1",
     "next": "14.2.9",
     "next-auth": "^4.24.7",
     "next-seo": "^6.6.0",
+    "node-fetch": "^3.3.2",
+    "pdf-lib": "^1.17.1",
     "razorpay": "^2.9.4",
     "react": "^18",
     "react-dom": "^18",
