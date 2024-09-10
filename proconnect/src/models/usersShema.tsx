@@ -29,7 +29,7 @@ export interface BaseUser extends Document {
     mentorRequests?: Array<string>;
     availabilityForProjects?: boolean;
     preferredContactMethod?: string;
-    role: 'user' | 'alumni';  // Distinguishes between User and Alumni
+    role: 'user' | 'alumni' | 'admin';  // Distinguishes between User and Alumni
 }
 
 export interface AlumniSpecific {

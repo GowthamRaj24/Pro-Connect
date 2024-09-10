@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const url = process.env.DB_CONNECT || '';
 
 const connect = async () => {
@@ -9,5 +9,5 @@ const connect = async () => {
         console.log('Error connecting to the database', err);
     }
 };
+export default connect;
 
-exports.connect = connect;

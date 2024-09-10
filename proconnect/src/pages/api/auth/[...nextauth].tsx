@@ -1,8 +1,8 @@
-import UserB from '@/models/UserB'
-import dbConnect from '@/utils/dbConnect'
+import usersShema from '@/models/usersShema'
+import connect from '../../../../db'
 import NextAuth,{NextAuthOptions} from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import {compare} from 'bcryptjs'
+import {compare} from 'bcrypt'
 const options:NextAuthOptions={
     providers:[
         CredentialsProvider({
@@ -13,8 +13,8 @@ const options:NextAuthOptions={
                 password:{label:"Password",type:"password"}
             },
             async authorize(credentials) {
-                await dbConnect().catch(err=>{throw new Error(err)})
-                const user=await UserB.findOne({
+                await connect().catch(err=>{throw new Error(err)})
+                const user=await usersShema.findOne({
                     email:credentials?.email
                 }).select("+password")
                 if(!user){
