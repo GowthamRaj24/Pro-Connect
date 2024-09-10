@@ -1,0 +1,68 @@
+GOWTHAM RAJU MANDA
++91 9491226619 | Bengalore
+mgowthamraj9491@gmail.com | github.com/GowthamRaj24 | linkedin.com/in/gowtham-raj-1061a5272 |
+https://gowthamraj24n.netlify.app/
+Highly motivated B.Tech CSE - AI& ML Student passionate about Computer Vision and NLP. Skilled in Machine Learning,
+Deep Learning, Web-Development, and DSA, with problem-solving, logical thinking, data-driven decision-making skills.
+Committed to continuous learning and growth.
+EDUCATION
+GITAM University, B-Tech in CSE - AI & ML | Bangalore, India GPA: 8.76 / 10.0 2021 - Present
+Sasi Junior College, Intermediate | Tanuku, India Percent: 94.1% 2019-2021
+Sri Chaitanya School, 10th Class | Penugonda, India GPA: 9.7 / 10 2018-2019
+WORK EXPERIENCE
+MURTI LABS, Machine Learning Intern | Bengaluru (India) May 2024 - Present
+• Automated drone movement by detecting and classifying different parts of the coconut tree, including trunk, branches,
+leaves, and coconuts.
+• Implemented obstacle detection algorithms to ensure safe cutting operations by identifying and avoiding obstacles.
+VYZA SOLUTION PVT LTD, AI & ML Automation Intern. |(6 Months) Remote. Sept 2023 - March 2024
+• Developed a Back Test Engine with Multiple Deep Learning Models with the team.
+• Implemented Time Series models with Real World Data through LSTM.
+• Accelerated development by 40%, delivered multiple fully functional Stock Signalling Models.
+FEYNN Labs, Machine Learning Intern | Remote (India) Nov 2023 - Jan 2024
+• Prepared a Report on Product Idea which will Primarily use ML and AI to solve real world business problems.
+• Used Data Analysis techniques to Segment Real World Business Markets and Industries based on market variables.
+• Worked with a team of 5members and learnt how to deal with Real World Data.
+SKILLS
+Languages Python (TensorFlow, Keras, Pandas, Scikit‑learn, Pandas etc.) ,C/C++ , Git, HTML, CSS, JavaScript.
+Technical Skills Deep Learning, Computer Vision, NLP , ML Algorithms , Statistical Analysis, Model Evaluation,
+DBMS , SQL, MongoDB, ExpressJS, ReactJS, NodeJS.
+PROJECTS
+G-BUDDY – || ReactJS || MongoDB || ExpressJS || NodeJS Apr 2024 - May 2024
+• G-Buddy is a platform for students to buy and sell books and other products, with a cart system
+• Implemented a login page using JWT (JSON Web Tokens) for authentication, ensuring secure user sessions and
+protecting sensitive data.
+• Added a chatbot to assist users, providing instant help and improving overall user experience on the platform.
+Personal Portfolio – || ReactJS || CSS May 2024 - June 2024
+• Built a personal portfolio website using React and Magic UI to showcase my skills, projects, and achievements.
+• Built to effectively present my work and accomplishments in a clear and accessible way.
+Email Spam Detection – Data Preprocessing || NLP Nov 2023 - Dec 2023
+• Created a machine learning model to classify text messages as spam or non-spam using Natural Language Processing
+techniques.
+• Conducted extensive data cleaning and preprocessing, including tokenization, stemming, and lemmatization, to pre pare text data for analysis.
+Churn Prediction – || Data Collection || Data Preprocessing || Model Building Sept 2023 - Oct 2023
+• Churn Prediciton for businesses to understand and anticipate customer behavior using Logistic Regression Model.
+• predicted customer churn rates based on a variety of features, including customer demographics, banking activities,
+and historical transaction data..
+HACKATHONS
+HACKFEST 2024 (48 Hrs). WON 2nd PLACE
+Parking Management System using Computer Vision.
+• We Achieved 2nd Place among 100 Teams for our Machine Learning Integrated project.
+• Built a surveillance Web Application System from scratch with cameras by Implementing OpenCV, Augmented Reality.
+• Detecting Empty Parking slots (OpenCV) and Automating the Car Parking Process by Navigating to the nearest Avaliable Slot (AR).
+Internal SMART INDIA HACKATHON 2023 (24Hrs). WON 1st PLACE
+Crowd management, Crime prevention using existing CCTV Network.
+• We Achieved 1st Place among 25 Teams in Internal Hackathon conducted by GITAM blr.
+• We used computer vision to analyze video streams for crowd behavior and trained our model with a custom dataset to prevent crime.
+• We have used YOLOv8 model for Object detection, real-time analysis and Implemented a Alert System for Crime Prevention.
+CERTIFICATES
+Natural Language Processing NLP - {Ongoing} deeplearning.ai
+Deep Learning Specialization deeplearning.ai
+Advanced Data Structures and Algorithms GeeksforGeeks
+AWS Academy Machine Learning Foundations AWS Training
+Machine Learning Specialization Stanford Online
+DSA Journey
+Leetcode - Solved 400+ DSA Problems with 250+ Active Days and 8 Badges.
+CodeChef - Attended 6+ Coding Contests
+Declaration
+I hereby declare that the information provided in this resume is accurate and true to the best of my knowledge. I understand that any
+misrepresentation of facts may lead to my disqualification or dismissal from the selection process.
