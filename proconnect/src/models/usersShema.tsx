@@ -6,6 +6,7 @@ export interface BaseUser extends Document {
     username: string;
     password: string;
     transactions: any[];
+    filled:Boolean;
     contacts: any[];
     registrationNumber?: string;
     department?: string;
@@ -184,7 +185,8 @@ const userSchema: Schema = new Schema({
         status : { type: String },
         sheduledTime : {type : Date},
         feedback: { type: String }
-    }, { _id: false })]}
+    }, { _id: false })]},
+    filled : {type : Boolean , default: false}
 });
 
 export default mongoose.models.User || mongoose.model<UserDocument>('User', userSchema);

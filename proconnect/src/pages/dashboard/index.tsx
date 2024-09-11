@@ -6,9 +6,10 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoMdTime } from "react-icons/io";
 import { useRouter } from "next/router";
 import Nav from "@/components/Nav";
+import { useSession } from "next-auth/react";
+
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -25,7 +26,10 @@ const responsive = {
     items: 1,
   },
 };
+
+const {data:session } = useSession();
 const EventContribute = () => {
+  
   return (
  <>
     <div
@@ -177,8 +181,10 @@ const UpdateAlumniProfile = () =>{
     </div>
   );
 };
+
 const Dashboard = () => {
   const router = useRouter();
+  const {data:session}=useSession();
   return (
    <>
    <Nav/>
@@ -312,7 +318,8 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-    <UpdateAlumniProfile/>
+    <UpdateAlumniProfile />
+
     </>
   );
 };
