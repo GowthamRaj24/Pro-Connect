@@ -18,7 +18,7 @@ const Signup = () => {
     firstname: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
   });
 
   const handlechange = (e: any) => {
@@ -47,7 +47,9 @@ const Signup = () => {
       .then((res) => {
         setRedirection_login(
           <div className="text-center mt-4">
-            <p className="text-green-500">Your account has been created successfully!</p>
+            <p className="text-green-500">
+              Your account has been created successfully!
+            </p>
             <button
               className="bg-black text-white px-4 py-2 rounded-md mt-4"
               onClick={redirect_now}
@@ -89,9 +91,9 @@ const Signup = () => {
           className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
         >
           <div className="flex flex-row gap-3 items-center my-2">
-        <div className="w-1 h-10 bg-black rounded-lg"></div>
-        <h1 className="text-xl">Sign up</h1>
-      </div>
+            <div className="w-1 h-10 bg-black rounded-lg"></div>
+            <h1 className="text-xl">Sign up</h1>
+          </div>
           <div className="mb-4">
             <label className="block text-gray-700">First Name</label>
             <input
@@ -128,7 +130,9 @@ const Signup = () => {
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
             {responseerr.emailerr && (
-              <p className="text-red-500 text-sm mt-1">{responseerr.emailerr}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {responseerr.emailerr}
+              </p>
             )}
           </div>
           <div className="mb-4">
