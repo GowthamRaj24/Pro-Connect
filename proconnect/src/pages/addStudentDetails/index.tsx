@@ -24,7 +24,7 @@ const AddStudentDetails = () => {
 
     const addStudentDetails = async () => {
         try {
-            const res = await axios.post("../api/addUserDetails?userId" + session?.user?._id, userDetails);
+            const res = await axios.post("../api/addUserDetails?userId=" + session?.user?._id, userDetails);
             if (res.status === 200) {
                 console.log("Student details added successfully");
             } else {
@@ -37,7 +37,7 @@ const AddStudentDetails = () => {
 
     const addAlumniDetails = async () => {
         try {
-            const res = await axios.post("../api/addUserDetails?userId" + session?.user?._id, alumniDetails );
+            const res = await axios.post("../api/addUserDetails?userId=" + session?.user?._id, alumniDetails );
             if (res.status === 200) {
                 console.log("Alumni details added successfully");
             } else {

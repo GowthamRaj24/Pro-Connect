@@ -2,6 +2,8 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Chatbot from "./Chatbot";
+
 const Nav=()=>{
     const router=useRouter();
     const [showMenu,setShowMenu]=useState(false);
@@ -58,6 +60,7 @@ const Nav=()=>{
                     >Logout</button>
                 </div>
             )}
+            <Chatbot/>
         </div>
     );
 };
