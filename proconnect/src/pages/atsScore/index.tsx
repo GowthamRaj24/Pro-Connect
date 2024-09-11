@@ -73,7 +73,7 @@ const FileInput: React.FC = () => {
         <div className="bg-white rounded-lg p-8 w-256">
           <div className="flex flex-row gap-3 items-center">
             <div className="w-1 h-10 bg-black rounded-lg"></div>
-            <h1 className="text-xl">Resume Evaluator</h1>
+            <h1 className="text-xl">Resume ATS Score</h1>
           </div>
 
           <div className="mb-6">

@@ -67,7 +67,7 @@ const CoverLetter: React.FC = () => {
         <div className="w-full bg-white p-8 rounded-md">
           <div className="flex flex-row gap-3 items-center">
             <div className="w-1 h-10 bg-black rounded-lg"></div>
-            <h1 className="text-xl">Resume Evaluator</h1>
+            <h1 className="text-xl">Cover letter generator</h1>
           </div>
 
           <div className="mb-4 my-3">
