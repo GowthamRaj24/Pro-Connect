@@ -8,7 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (method) {
         case "POST":
             try {
-                const user = await usersShema.findById(req.body.userId);
+                const user = await usersShema.findById(req.query.userId);
 
                 if (!user) {
                     res.status(400).json({ message: "User not found" });
@@ -19,7 +19,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     ...req.body.data
                 };
 
-                Object.assign(user, userData);
+                user.set(userData);
+                
                 await user.save();
                 res.status(200).json({ message: "User details updated successfully" });
             } catch (err) {

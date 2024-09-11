@@ -249,7 +249,10 @@ const UpdateAlumniProfile = () =>{
 
 const Dashboard = () => {
   const router = useRouter();
-  const {data:session}=useSession();
+  const {data : session} = useSession();
+  const filled :any = session?.user?.filled;
+  
+
   return (
    <>
    <Nav/>
@@ -383,7 +386,10 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-    {/* <UpdateAlumniProfile/> */}
+    {(!filled) ?
+    (<UpdateAlumniProfile/>) :
+    (null)}
+  
     </>
   );
 };
