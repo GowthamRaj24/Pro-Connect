@@ -5,23 +5,40 @@ import { RiFunctionLine } from "react-icons/ri";
 import { GiSkills } from "react-icons/gi";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-const LeaderboardComp = ({index}:any) => {
+import Nav from "@/components/Nav";
+const LeaderboardComp = ({ index }: any) => {
   return (
     <div
-      className="flex flex-row gap-3 p-2 w-72 rounded-md"
+      className="flex flex-row gap-3 p-2 w-72 rounded-md relative"
       style={{
         border: "1px solid lightgrey",
       }}
     >
-      {index===0 && <div className=""><p>1st</p></div>}
-      {index===1 && <div className=""><p>2nd</p></div>}
-      {index===2 && <div className=""><p>3rd</p></div>}
-      {index>2 && <div className=""><p>{index+1}th</p></div>}
+      <div className="absolute right-2 top-5">
+        {index === 0 && (
+          <div className="">
+            <p>1st</p>
+          </div>
+        )}
+        {index === 1 && (
+          <div className="">
+            <p>2nd</p>
+          </div>
+        )}
+        {index === 2 && (
+          <div className="">
+            <p>3rd</p>
+          </div>
+        )}
+        {index > 2 && (
+          <div className="">
+            <p>{index + 1}th</p>
+          </div>
+        )}
+      </div>
 
       <Image
-        src={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK2CNpBwzHxcljl-ZBhjhsJzVJDoxF7BqaZQ&s"
-        }
+        src={`https://picsum.photos/300/${Math.round(Math.random() * 100)}`}
         width={100}
         height={100}
         objectFit="cover"
@@ -130,6 +147,7 @@ const DonateMoney = ({ setDonate, setThanks }: any) => {
     paymentObject.open();
   };
   return (
+   <>
     <div
       className="w-140 h-44 rounded-md overflow-hidden fixed grid grid-cols-2 bg-white"
       style={{
@@ -188,7 +206,7 @@ const DonateMoney = ({ setDonate, setThanks }: any) => {
           </button>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
@@ -196,15 +214,16 @@ const DonateForGood = () => {
   const [donate, setDonate] = useState(false);
   const [thanks, setThanks] = useState(false);
   return (
+    <>
+    <Nav/>
     <div className="w-256 mx-auto">
       <div className="w-full h-72 overflow-hidden flex flex-row items-center justify-center rounded-md relative my-3">
         <Image
           src={
-            "https://www.immihelp.com/assets/cms/doing-charity-the-american-way-a-how-to-guide-1.jpg"
+            "https://www.moneyland.ch/resources/public/dtc/media/donations-payment-type-transaction-fees-switzerland.jpg"
           }
           width={1920}
           height={1580}
-          objectFit="cover"
           alt="Donate for Good"
         />
         <p
@@ -233,7 +252,7 @@ const DonateForGood = () => {
           </div>
           <div className="grid grid-cols-2 h-40 gap-2">
             <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
-              <MdLibraryBooks size={30} />
+              <MdLibraryBooks size={30} color="#1f3c52"/>
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
                 <h1 className="text-lg font-sans">
@@ -242,7 +261,7 @@ const DonateForGood = () => {
               </div>
             </div>
             <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
-              <MdOutlineBloodtype size={30} />
+              <MdOutlineBloodtype size={30} color="#1f3c52"/>
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
                 <h1 className="text-lg font-sans">
@@ -251,7 +270,7 @@ const DonateForGood = () => {
               </div>
             </div>
             <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
-              <RiFunctionLine size={30} />
+              <RiFunctionLine size={30} color="#1f3c52"/>
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
                 <h1 className="text-lg font-sans">
@@ -260,7 +279,7 @@ const DonateForGood = () => {
               </div>
             </div>
             <div className="flex flex-row items-center gap-3 bg-gray-100 h-16 p-3 rounded-md">
-              <GiSkills size={30} />
+              <GiSkills size={30} color="#1f3c52"/>
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-1 h-10 bg-black rounded-lg"></div>
                 <h1 className="text-lg font-sans">
@@ -315,9 +334,9 @@ const DonateForGood = () => {
           </button>
         </div>
       </div>
-      {donate && <DonateMoney setDonate={setDonate} setThanks={setThanks}/>}
+      {donate && <DonateMoney setDonate={setDonate} setThanks={setThanks} />}
       {thanks && <ThankForDonation setThanks={setThanks} />}
-    </div>
+    </div></>
   );
 };
 export default DonateForGood;

@@ -21,15 +21,28 @@ const Nav=()=>{
                 <div className="absolute top-16 right-0 w-64 bg-white rounded-md p-3 z-40" style={{
                     boxShadow:"0 0 10px rgba(0,0,0,0.2)"
                 }}>
-                    <button className="w-full p-2 my-2">Dashboard</button>
+                    <button className="w-full p-2 my-2" onClick={()=>{
+                        router.push('/dashboard')
+                    }}>Dashboard</button>
                     <button className="w-full p-2 my-2">Profile</button>
                     <button className="w-full p-2 my-2">Events</button>
                     <button className="w-full p-2 my-2">Communities</button>
-                    <button className="w-full p-2 my-2">Mentorship</button>
-                    <button className="w-full p-2 my-2">Discuss</button>
+                    <button className="w-full p-2 my-2"
+                    onClick={()=>{
+                        router.push('/mentorship')
+                    }}
+                    >Mentorship</button>
+                    <button className="w-full p-2 my-2" 
+                     onClick={()=>{
+                        router.push('/reviews')
+                    }}>Discuss</button>
                     <button className="w-full p-2 my-2">Projects</button>
                     <button className="w-full p-2 my-2">Initiatives</button>
-                    <button className="w-full p-2 my-2">Donations</button>
+                    <button className="w-full p-2 my-2"
+                         onClick={()=>{
+                            router.push('/donateForGood')
+                        }}
+                    >Donate for good</button>
                     <button className="w-full p-2 my-2"
                         onClick={()=>{
                             router.push('/atsScore')

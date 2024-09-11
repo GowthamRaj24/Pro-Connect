@@ -19,7 +19,7 @@ const Signup = () => {
     lastname: "",
     email: "",
     password: "",
-    role: "",
+    role: ""
   });
 
   const handlechange = (e: any) => {
@@ -131,7 +131,9 @@ const Signup = () => {
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
             {responseerr.emailerr && (
-              <p className="text-red-500 text-sm mt-1">{responseerr.emailerr}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {responseerr.emailerr}
+              </p>
             )}
           </div>
           <div className="mb-4">
